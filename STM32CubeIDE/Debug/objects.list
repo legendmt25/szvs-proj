@@ -54,8 +54,6 @@
 "./Drivers/BSP/STM32H750B-DK/stm32h750b_discovery_ts.o"
 "./Drivers/CMSIS/system_stm32h7xx.o"
 "./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal.o"
-"./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_adc.o"
-"./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_adc_ex.o"
 "./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_cortex.o"
 "./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_crc.o"
 "./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_crc_ex.o"

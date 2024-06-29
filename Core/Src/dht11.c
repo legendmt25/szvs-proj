@@ -20,6 +20,7 @@
 //
 
 #include "dht11.h"
+#include <string.h>
 
 // Return values:
 // DHTLIB_OK
@@ -29,8 +30,7 @@ DHT11_HandleTypeDef read_DHT11(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin)
 {
 	// BUFFER TO RECEIVE
 	uint8_t bits[5];
-	uint8_t cnt = 7;
-	uint8_t idx = 0;
+	uint8_t i;
 
 	DHT11_HandleTypeDef dht11;
 
@@ -43,61 +43,36 @@ DHT11_HandleTypeDef read_DHT11(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin)
     HAL_GPIO_WritePin(GPIOx, GPIO_Pin, GPIO_PIN_SET);
     HAL_Delay(40);
 
-    memset(data, 0, sizeof(data));
+    memset(bits, 0, sizeof(bits));
 
-	// ACKNOWLEDGE or TIMEOUT
-	unsigned int loopCnt = 10000;
-	while(HAL_GPIO_ReadPin(GPIOx, GPIO_Pin) == GPIO_PIN_RESET)
-		if (loopCnt-- == 0) {
-			dht11.error = DHTLIB_ERROR_TIMEOUT;
-			return dht11;
-		}
+    for(i=0; i<40; i++)
+    {
+        // wait for low pulse
+        while(!HAL_GPIO_ReadPin(GPIOx, GPIO_Pin));
 
-	loopCnt = 10000;
-	while(HAL_GPIO_ReadPin(GPIOx, GPIO_Pin) == GPIO_PIN_SET)
-		if (loopCnt-- == 0) {
-			dht11.error = DHTLIB_ERROR_TIMEOUT;
-			return dht11;
-		}
+        // wait for high pulse
+        uint32_t t = 0;
+        while(HAL_GPIO_ReadPin(GPIOx, GPIO_Pin))
+        {
+            t++;
+            HAL_Delay(1);
+        }
 
-	// READ OUTPUT - 40 BITS => 5 BYTES or TIMEOUT
-	for (int i=0; i<40; i++)
-	{
-		loopCnt = 10000;
-		while(HAL_GPIO_ReadPin(GPIOx, GPIO_Pin) == GPIO_PIN_RESET)
-			if (loopCnt-- == 0) {
-				dht11.error = DHTLIB_ERROR_TIMEOUT;
-				return dht11;
-			}
+        // store bit value in bits array
+        if(t > 30)
+        	bits[i/8] |= (1 << (7 - (i % 8)));
+    }
 
-		unsigned long t = HAL_GetTick();
-
-		loopCnt = 10000;
-		while(HAL_GPIO_ReadPin(GPIOx, GPIO_Pin) == GPIO_PIN_SET)
-			if (loopCnt-- == 0) {
-				dht11.error = DHTLIB_ERROR_TIMEOUT;
-				return dht11;
-			}
-
-		if ((HAL_GetTick() - t) > 40) bits[idx] |= (1 << cnt);
-		if (cnt == 0)   // next byte?
-		{
-			cnt = 7;    // restart at MSB
-			idx++;      // next byte!
-		}
-		else cnt--;
-	}
-
-	// WRITE TO RIGHT VARS
-        // as bits[1] and bits[3] are allways zero they are omitted in formulas.
-	dht11.humidity    = bits[0];
-	dht11.temperature = bits[2];
-
-	uint8_t sum = bits[0] + bits[2];  
-
-	if (bits[4] != sum) {
-		dht11.error = DHTLIB_ERROR_CHECKSUM;
-	}
+    // verify checksum
+    if(bits[4] == (bits[0] + bits[1] + bits[2] + bits[3]))
+    {
+        // convert temperature and humidity values
+        dht11.humidity = (bits[0] << 8 | bits[1]) / 10.0;
+        dht11.temperature = ((bits[2] & 0x7F) << 8 | bits[3]) / 10.0;
+        if (bits[2] & 0x80) dht11.temperature *= -1;
+    } else {
+    	dht11.error = DHTLIB_ERROR_CHECKSUM;
+    }
 
 	return dht11;
 }

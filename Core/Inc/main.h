@@ -37,6 +37,11 @@ extern "C" {
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
+typedef struct {
+	uint8_t temperature;
+	uint8_t humidity;
+	uint8_t error;
+} ApplicationContext_TypeDef;
 
 /* USER CODE END ET */
 

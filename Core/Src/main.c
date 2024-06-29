@@ -28,10 +28,16 @@
 #include "stm32h750b_discovery_qspi.h"
 #include "stm32h750b_discovery_sdram.h"
 #include "dht11.h"
+#include "dht11.c"
+#include "string.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
+typedef struct {
+	char* type;
+	void* obj;
+} Control_TypeDef;
 
 /* USER CODE END PTD */
 
@@ -45,7 +51,6 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-ADC_HandleTypeDef hadc1;
 
 CRC_HandleTypeDef hcrc;
 
@@ -82,15 +87,27 @@ const osThreadAttr_t videoTask_attributes = {
   .stack_size = 1000 * 4,
   .priority = (osPriority_t) osPriorityLow,
 };
-/* Definitions for readTask0 */
-osThreadId_t readTask0Handle;
-const osThreadAttr_t readTask0_attributes = {
-  .name = "readTask0",
+/* Definitions for dht11Task */
+osThreadId_t dht11TaskHandle;
+const osThreadAttr_t dht11Task_attributes = {
+  .name = "dht11Task",
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
+/* Definitions for consumerTask */
+osThreadId_t consumerTaskHandle;
+const osThreadAttr_t consumerTask_attributes = {
+  .name = "consumerTask",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
+/* Definitions for controlQueue */
+osMessageQueueId_t controlQueueHandle;
+const osMessageQueueAttr_t controlQueue_attributes = {
+  .name = "controlQueue"
+};
 /* USER CODE BEGIN PV */
-
+ApplicationContext_TypeDef applicationContext;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -104,11 +121,11 @@ static void MX_QUADSPI_Init(void);
 static void MX_FMC_Init(void);
 static void MX_JPEG_Init(void);
 static void MX_CRC_Init(void);
-static void MX_ADC1_Init(void);
 void StartDefaultTask(void *argument);
 extern void TouchGFX_Task(void *argument);
 extern void videoTaskFunc(void *argument);
-void readTask(void *argument);
+void dht11Task_handler(void *argument);
+void consumerTask_handler(void *argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -165,7 +182,6 @@ int main(void)
   MX_LIBJPEG_Init();
   MX_JPEG_Init();
   MX_CRC_Init();
-  MX_ADC1_Init();
   MX_TouchGFX_Init();
   /* Call PreOsInit function */
   MX_TouchGFX_PreOSInit();
@@ -188,6 +204,10 @@ int main(void)
   /* start timers, add new ones, ... */
   /* USER CODE END RTOS_TIMERS */
 
+  /* Create the queue(s) */
+  /* creation of controlQueue */
+  controlQueueHandle = osMessageQueueNew (16, sizeof(uint16_t), &controlQueue_attributes);
+
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
   /* USER CODE END RTOS_QUEUES */
@@ -202,8 +222,11 @@ int main(void)
   /* creation of videoTask */
   videoTaskHandle = osThreadNew(videoTaskFunc, NULL, &videoTask_attributes);
 
-  /* creation of readTask0 */
-  readTask0Handle = osThreadNew(readTask, NULL, &readTask0_attributes);
+  /* creation of dht11Task */
+  dht11TaskHandle = osThreadNew(dht11Task_handler, NULL, &dht11Task_attributes);
+
+  /* creation of consumerTask */
+  consumerTaskHandle = osThreadNew(consumerTask_handler, NULL, &consumerTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -284,74 +307,6 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-}
-
-/**
-  * @brief ADC1 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_ADC1_Init(void)
-{
-
-  /* USER CODE BEGIN ADC1_Init 0 */
-
-  /* USER CODE END ADC1_Init 0 */
-
-  ADC_MultiModeTypeDef multimode = {0};
-  ADC_ChannelConfTypeDef sConfig = {0};
-
-  /* USER CODE BEGIN ADC1_Init 1 */
-
-  /* USER CODE END ADC1_Init 1 */
-
-  /** Common config
-  */
-  hadc1.Instance = ADC1;
-  hadc1.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV1;
-  hadc1.Init.Resolution = ADC_RESOLUTION_16B;
-  hadc1.Init.ScanConvMode = ADC_SCAN_DISABLE;
-  hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
-  hadc1.Init.LowPowerAutoWait = DISABLE;
-  hadc1.Init.ContinuousConvMode = DISABLE;
-  hadc1.Init.NbrOfConversion = 1;
-  hadc1.Init.DiscontinuousConvMode = DISABLE;
-  hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
-  hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
-  hadc1.Init.ConversionDataManagement = ADC_CONVERSIONDATA_DR;
-  hadc1.Init.Overrun = ADC_OVR_DATA_PRESERVED;
-  hadc1.Init.LeftBitShift = ADC_LEFTBITSHIFT_NONE;
-  hadc1.Init.OversamplingMode = DISABLE;
-  if (HAL_ADC_Init(&hadc1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  /** Configure the ADC multi-mode
-  */
-  multimode.Mode = ADC_MODE_INDEPENDENT;
-  if (HAL_ADCEx_MultiModeConfigChannel(&hadc1, &multimode) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  /** Configure Regular Channel
-  */
-  sConfig.Channel = ADC_CHANNEL_10;
-  sConfig.Rank = ADC_REGULAR_RANK_1;
-  sConfig.SamplingTime = ADC_SAMPLETIME_1CYCLE_5;
-  sConfig.SingleDiff = ADC_SINGLE_ENDED;
-  sConfig.OffsetNumber = ADC_OFFSET_NONE;
-  sConfig.Offset = 0;
-  sConfig.OffsetSignedSaturation = DISABLE;
-  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN ADC1_Init 2 */
-
-  /* USER CODE END ADC1_Init 2 */
-
 }
 
 /**
@@ -647,7 +602,6 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOD_CLK_ENABLE();
   __HAL_RCC_GPIOF_CLK_ENABLE();
   __HAL_RCC_GPIOH_CLK_ENABLE();
-  __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
@@ -743,22 +697,65 @@ void StartDefaultTask(void *argument)
   /* USER CODE END 5 */
 }
 
-/* USER CODE BEGIN Header_readTask */
+/* USER CODE BEGIN Header_dht11Task_handler */
 /**
-* @brief Function implementing the ReadTask thread.
+* @brief Function implementing the dht11Task thread.
 * @param argument: Not used
 * @retval None
 */
-/* USER CODE END Header_readTask */
-void readTask(void *argument)
+/* USER CODE END Header_dht11Task_handler */
+void dht11Task_handler(void *argument)
 {
-  /* USER CODE BEGIN readTask */
+  /* USER CODE BEGIN dht11Task_handler */
   /* Infinite loop */
   for(;;)
   {
-	DHT11_HandleTypeDef dht11 = read_DHT11(GPIOE, GPIO_PIN_3);
+	  DHT11_HandleTypeDef dht11 = read_DHT11(GPIOE, GPIO_PIN_3);
+
+	  Control_TypeDef control;
+	  control.obj = (void*) &dht11;
+	  control.type = "DHT11";
+
+	  if(osMessageQueuePut( &controlQueueHandle, ( void * ) &control, 0, 0) != pdPASS) {
+		continue;
+	  }
+
+	  osDelay(1);
   }
-  /* USER CODE END readTask */
+  /* USER CODE END dht11Task_handler */
+}
+
+/* USER CODE BEGIN Header_consumerTask_handler */
+/**
+* @brief Function implementing the consumerTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_consumerTask_handler */
+void consumerTask_handler(void *argument)
+{
+  /* USER CODE BEGIN consumerTask_handler */
+  /* Infinite loop */
+  for(;;)
+  {
+    void* msg = NULL;
+
+    if(osMessageQueueGet(&controlQueueHandle, msg, NULL, 0) != pdPASS) {
+    	continue;
+    }
+
+    Control_TypeDef* control = (Control_TypeDef*) msg;
+
+    if(strcmp(control->type, "DHT11")) {
+      DHT11_HandleTypeDef* dht11 = (DHT11_HandleTypeDef*) control->obj;
+
+      applicationContext.temperature = dht11->temperature;
+      applicationContext.humidity = dht11->humidity;
+    }
+
+    osDelay(1);
+  }
+  /* USER CODE END consumerTask_handler */
 }
 
 /* MPU Configuration */
