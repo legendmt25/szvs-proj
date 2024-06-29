@@ -27,6 +27,7 @@
 /* USER CODE BEGIN Includes */
 #include "stm32h750b_discovery_qspi.h"
 #include "stm32h750b_discovery_sdram.h"
+#include "dht11.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -755,8 +756,7 @@ void readTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-	HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_3);
-    osDelay(15000);
+	DHT11_HandleTypeDef dht11 = read_DHT11(GPIOE, GPIO_PIN_3);
   }
   /* USER CODE END readTask */
 }
