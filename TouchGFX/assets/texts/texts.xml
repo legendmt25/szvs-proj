@@ -6,11 +6,41 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_YOM4" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">&lt; Back</Translation>
+      </Text>
+      <Text Id="__SingleUse_0ATZ" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Temprature &gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_4SII" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">000</Translation>
+      </Text>
+      <Text Id="__SingleUse_JNB3" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Min: &lt;value&gt; °C</Translation>
+      </Text>
+      <Text Id="__SingleUse_HQVR" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">000</Translation>
+      </Text>
+      <Text Id="__SingleUse_XZKY" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Max: &lt;value&gt; °C</Translation>
+      </Text>
+      <Text Id="__SingleUse_DG5G" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">000</Translation>
+      </Text>
+      <Text Id="__SingleUse_DSQV" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Current: &lt;value&gt; °C</Translation>
+      </Text>
+      <Text Id="__SingleUse_YZZO" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">000</Translation>
+      </Text>
+      <Text Id="__SingleUse_Y9RM" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Humidity: &lt;value&gt;%</Translation>
+      </Text>
       <Text Id="__SingleUse_1MEA" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">000</Translation>
       </Text>
       <Text Id="__SingleUse_9J1Y" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">ADC Value: &lt;value&gt;</Translation>
+        <Translation Language="GB">&lt;value&gt; °C</Translation>
       </Text>
     </TextGroup>
   </Texts>

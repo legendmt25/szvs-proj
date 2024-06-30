@@ -26,7 +26,8 @@ public:
     virtual void deactivate();
 
     virtual ~Screen1Presenter() {};
-    virtual void setADC(int value);
+    virtual void setTemperature(int value);
+    virtual void setHumidity(int value);
 
 private:
     Screen1Presenter();

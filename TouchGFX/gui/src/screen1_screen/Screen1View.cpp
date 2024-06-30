@@ -15,7 +15,12 @@ void Screen1View::tearDownScreen()
     Screen1ViewBase::tearDownScreen();
 }
 
-void Screen1View::setADC(int value) {
-	Unicode::snprintf(textArea1Buffer, TEXTAREA1_SIZE, "%d", value);
-	textArea1.invalidate();
+void Screen1View::setTemperature(int value) {
+	Unicode::snprintf(temperatureTextAreaBuffer, TEMPERATURETEXTAREA_SIZE, "%d", value);
+	temperatureTextArea.invalidate();
+};
+
+void Screen1View::setHumidity(int value) {
+	Unicode::snprintf(humidityTextAreaBuffer, HUMIDITYTEXTAREA_SIZE, "%d", value);
+	humidityTextArea.invalidate();
 };

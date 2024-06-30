@@ -8,8 +8,9 @@
 #include <mvp/View.hpp>
 #include <gui/screen1_screen/Screen1Presenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
-#include <touchgfx/widgets/Image.hpp>
+#include <touchgfx/widgets/AnimatedImage.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <touchgfx/containers/buttons/Buttons.hpp>
 
 class Screen1ViewBase : public touchgfx::View<Screen1Presenter>
 {
@@ -27,16 +28,30 @@ protected:
      * Member Declarations
      */
     touchgfx::Box __background;
-    touchgfx::Image image1;
-    touchgfx::TextAreaWithOneWildcard textArea1;
+    touchgfx::AnimatedImage animatedImage1;
+    touchgfx::TextAreaWithOneWildcard humidityTextArea;
+    touchgfx::TextAreaWithOneWildcard temperatureTextArea;
+    touchgfx::TextButtonStyle< touchgfx::ClickButtonTrigger >  temperatureButton;
 
     /*
      * Wildcard Buffers
      */
-    static const uint16_t TEXTAREA1_SIZE = 4;
-    touchgfx::Unicode::UnicodeChar textArea1Buffer[TEXTAREA1_SIZE];
+    static const uint16_t HUMIDITYTEXTAREA_SIZE = 4;
+    touchgfx::Unicode::UnicodeChar humidityTextAreaBuffer[HUMIDITYTEXTAREA_SIZE];
+    static const uint16_t TEMPERATURETEXTAREA_SIZE = 4;
+    touchgfx::Unicode::UnicodeChar temperatureTextAreaBuffer[TEMPERATURETEXTAREA_SIZE];
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<Screen1ViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
 
 };
 

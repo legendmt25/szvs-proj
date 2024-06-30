@@ -22,10 +22,6 @@
 #include "dht11.h"
 #include <string.h>
 
-// Return values:
-// DHTLIB_OK
-// DHTLIB_ERROR_CHECKSUM
-// DHTLIB_ERROR_TIMEOUT
 DHT11_HandleTypeDef read_DHT11(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin)
 {
 	// BUFFER TO RECEIVE

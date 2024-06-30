@@ -16,7 +16,8 @@ public:
     void tick();
 protected:
     ModelListener* modelListener;
-    int ADC_VAL;
+    int temperature;
+    int humidity;
 };
 
 #endif // MODEL_HPP

@@ -5,30 +5,255 @@
         "Name": "Screen1",
         "Components": [
           {
-            "Type": "Image",
-            "Name": "image1",
-            "Width": 480,
-            "Height": 272,
-            "RelativeFilename": "__generated\\alternate_theme_images_backgrounds_480x272_rays.png"
+            "Type": "AnimatedImage",
+            "Name": "animatedImage1",
+            "Y": -4,
+            "Width": 500,
+            "Height": 276,
+            "FileNameFirst": "giphy-1.png",
+            "FileNameLast": "giphy-21.png",
+            "UpdateTicksInterval": 300,
+            "StartOnLoad": true,
+            "LoopEnabled": true
           },
           {
             "Type": "TextArea",
-            "Name": "textArea1",
-            "X": 161,
-            "Y": 124,
-            "Width": 159,
+            "Name": "humidityTextArea",
+            "X": 20,
+            "Y": 51,
+            "Width": 166,
+            "Height": 25,
+            "TextId": "__SingleUse_Y9RM",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true,
+            "Wildcard1": {
+              "TextId": "__SingleUse_YZZO",
+              "UseBuffer": true,
+              "BufferSize": 4
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "temperatureTextArea",
+            "X": 20,
+            "Y": 16,
+            "Width": 70,
             "Height": 25,
             "TextId": "__SingleUse_9J1Y",
             "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
             "AutoSize": true,
             "Wildcard1": {
               "TextId": "__SingleUse_1MEA",
               "UseBuffer": true,
               "BufferSize": 4
             }
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "temperatureButton",
+            "X": 20,
+            "Y": 229,
+            "Width": 166,
+            "Height": 29,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "TextId": "__SingleUse_0ATZ",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "ColorPressed": {
+                  "Red": 158,
+                  "Green": 157,
+                  "Blue": 157
+                }
+              }
+            ]
           }
         ],
-        "Interactions": []
+        "Interactions": [
+          {
+            "InteractionName": "temperatureButtonInteraction",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "temperatureButton"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionDirection": "East",
+              "ActionComponent": "Screen2"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "Screen2",
+        "CanvasBufferSize": 7200,
+        "Components": [
+          {
+            "Type": "AnimatedImage",
+            "Name": "animatedImage1",
+            "Y": -5,
+            "Width": 500,
+            "Height": 276,
+            "FileNameFirst": "giphy-1.png",
+            "FileNameLast": "giphy-21.png",
+            "UpdateTicksInterval": 600,
+            "StartOnLoad": true,
+            "LoopEnabled": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "minTemperatureTextArea",
+            "X": 16,
+            "Y": 143,
+            "Width": 121,
+            "Height": 25,
+            "TextId": "__SingleUse_JNB3",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true,
+            "Wildcard1": {
+              "TextId": "__SingleUse_4SII",
+              "UseBuffer": true,
+              "BufferSize": 4
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "temperatureTextArea",
+            "X": 16,
+            "Y": 76,
+            "Width": 162,
+            "Height": 25,
+            "TextId": "__SingleUse_DSQV",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true,
+            "Wildcard1": {
+              "TextId": "__SingleUse_DG5G",
+              "UseBuffer": true,
+              "BufferSize": 4
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "maxTemperatureTextArea",
+            "X": 16,
+            "Y": 108,
+            "Width": 127,
+            "Height": 25,
+            "TextId": "__SingleUse_XZKY",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true,
+            "Wildcard1": {
+              "TextId": "__SingleUse_HQVR",
+              "UseBuffer": true,
+              "BufferSize": 4
+            }
+          },
+          {
+            "Type": "DynamicGraph",
+            "Name": "temperatureGraph",
+            "X": 13,
+            "Y": 196,
+            "Width": 455,
+            "Height": 63,
+            "DataSeed": -2047510498,
+            "NumberOfValues": 10,
+            "MaxY": 10.0,
+            "Precision": "1",
+            "LastIndex": 9,
+            "XAxisScale": 1.0,
+            "InsertRandomValues": true,
+            "GraphType": "GraphWrapOverwrite",
+            "GraphDrawers": [
+              {
+                "Type": "LineDrawer",
+                "LineWidth": 2,
+                "FileNameImage": "",
+                "Color": {
+                  "Red": 20,
+                  "Green": 151,
+                  "Blue": 197
+                }
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "backButton",
+            "X": 13,
+            "Y": 23,
+            "Width": 78,
+            "Height": 28,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "TextId": "__SingleUse_YOM4",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "ColorPressed": {
+                  "Red": 158,
+                  "Green": 157,
+                  "Blue": 157
+                }
+              }
+            ]
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "backButtonInteraction",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "backButton"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionDirection": "West",
+              "ActionComponent": "Screen1"
+            }
+          }
+        ]
       }
     ],
     "CustomContainerDefinitions": [],

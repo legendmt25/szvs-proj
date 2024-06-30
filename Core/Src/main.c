@@ -28,14 +28,14 @@
 #include "stm32h750b_discovery_qspi.h"
 #include "stm32h750b_discovery_sdram.h"
 #include "dht11.h"
-#include "dht11.c"
+#include "dht11_simulated.c"
 #include "string.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 typedef struct {
-	char* type;
+	const char* type;
 	void* obj;
 } Control_TypeDef;
 
@@ -109,6 +109,8 @@ const osMessageQueueAttr_t controlQueue_attributes = {
 /* USER CODE BEGIN PV */
 ApplicationContext_TypeDef applicationContext;
 /* USER CODE END PV */
+
+
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
@@ -206,7 +208,7 @@ int main(void)
 
   /* Create the queue(s) */
   /* creation of controlQueue */
-  controlQueueHandle = osMessageQueueNew (16, sizeof(uint16_t), &controlQueue_attributes);
+  controlQueueHandle = osMessageQueueNew (16, sizeof(Control_TypeDef), &controlQueue_attributes);
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
@@ -611,9 +613,6 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(LCD_DE_GPIO_Port, LCD_DE_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOE, GPIO_PIN_3, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(VSYNC_FREQ_GPIO_Port, VSYNC_FREQ_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
@@ -638,9 +637,8 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin : PE3 */
   GPIO_InitStruct.Pin = GPIO_PIN_3;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
 
   /*Configure GPIO pin : VSYNC_FREQ_Pin */
@@ -716,9 +714,7 @@ void dht11Task_handler(void *argument)
 	  control.obj = (void*) &dht11;
 	  control.type = "DHT11";
 
-	  if(osMessageQueuePut( &controlQueueHandle, ( void * ) &control, 0, 0) != pdPASS) {
-		continue;
-	  }
+	  osStatus_t messageQueuePutStatus = osMessageQueuePut(controlQueueHandle, ( void * ) &control, 0, 0);
 
 	  osDelay(1);
   }
@@ -738,16 +734,17 @@ void consumerTask_handler(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    void* msg = NULL;
+    Control_TypeDef control;
 
-    if(osMessageQueueGet(&controlQueueHandle, msg, NULL, 0) != pdPASS) {
+    osStatus_t messageQueueGetStatus = osMessageQueueGet(controlQueueHandle, (void*) &control, NULL, 0);
+
+    if(messageQueueGetStatus != osOK) {
+    	osDelay(1);
     	continue;
     }
 
-    Control_TypeDef* control = (Control_TypeDef*) msg;
-
-    if(strcmp(control->type, "DHT11")) {
-      DHT11_HandleTypeDef* dht11 = (DHT11_HandleTypeDef*) control->obj;
+    if(!strcmp(control.type, "DHT11")) {
+      DHT11_HandleTypeDef* dht11 = (DHT11_HandleTypeDef*) control.obj;
 
       applicationContext.temperature = dht11->temperature;
       applicationContext.humidity = dht11->humidity;

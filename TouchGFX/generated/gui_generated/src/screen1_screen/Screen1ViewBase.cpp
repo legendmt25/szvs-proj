@@ -6,24 +6,43 @@
 #include <images/BitmapDatabase.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
 
-Screen1ViewBase::Screen1ViewBase()
+Screen1ViewBase::Screen1ViewBase() :
+    flexButtonCallback(this, &Screen1ViewBase::flexButtonCallbackHandler)
 {
     __background.setPosition(0, 0, 480, 272);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     add(__background);
 
-    image1.setXY(0, 0);
-    image1.setBitmap(touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_BACKGROUNDS_480X272_RAYS_ID));
-    add(image1);
+    animatedImage1.setXY(0, -4);
+    animatedImage1.setBitmaps(BITMAP_GIPHY_1_ID, BITMAP_GIPHY_21_ID);
+    animatedImage1.setUpdateTicksInterval(18);
+    animatedImage1.startAnimation(false, true, true);
+    add(animatedImage1);
 
-    textArea1.setXY(161, 124);
-    textArea1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    textArea1.setLinespacing(0);
-    Unicode::snprintf(textArea1Buffer, TEXTAREA1_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_1MEA).getText());
-    textArea1.setWildcard(textArea1Buffer);
-    textArea1.resizeToCurrentText();
-    textArea1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_9J1Y));
-    add(textArea1);
+    humidityTextArea.setXY(20, 51);
+    humidityTextArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    humidityTextArea.setLinespacing(0);
+    Unicode::snprintf(humidityTextAreaBuffer, HUMIDITYTEXTAREA_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_YZZO).getText());
+    humidityTextArea.setWildcard(humidityTextAreaBuffer);
+    humidityTextArea.resizeToCurrentText();
+    humidityTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_Y9RM));
+    add(humidityTextArea);
+
+    temperatureTextArea.setXY(20, 16);
+    temperatureTextArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    temperatureTextArea.setLinespacing(0);
+    Unicode::snprintf(temperatureTextAreaBuffer, TEMPERATURETEXTAREA_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_1MEA).getText());
+    temperatureTextArea.setWildcard(temperatureTextAreaBuffer);
+    temperatureTextArea.resizeToCurrentText();
+    temperatureTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_9J1Y));
+    add(temperatureTextArea);
+
+    temperatureButton.setText(TypedText(T___SINGLEUSE_0ATZ));
+    temperatureButton.setTextPosition(0, 0, 166, 29);
+    temperatureButton.setTextColors(touchgfx::Color::getColorFromRGB(255, 255, 255), touchgfx::Color::getColorFromRGB(158, 157, 157));
+    temperatureButton.setAction(flexButtonCallback);
+    temperatureButton.setPosition(20, 229, 166, 29);
+    add(temperatureButton);
 }
 
 Screen1ViewBase::~Screen1ViewBase()
@@ -34,4 +53,15 @@ Screen1ViewBase::~Screen1ViewBase()
 void Screen1ViewBase::setupScreen()
 {
 
+}
+
+void Screen1ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
+{
+    if (&src == &temperatureButton)
+    {
+        //temperatureButtonInteraction
+        //When temperatureButton clicked change screen to Screen2
+        //Go to Screen2 with screen transition towards East
+        application().gotoScreen2ScreenSlideTransitionEast();
+    }
 }

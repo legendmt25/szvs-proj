@@ -7,14 +7,9 @@
 extern "C"
 {
 	extern ApplicationContext_TypeDef applicationContext;
-//	extern ADC_HandleTypeDef hadc1;
-	long map(long x, long in_min, long in_max, long out_min, long out_max)
-	{
-	  return (x - in_min) * (out_max - out_min + 1) / (in_max - in_min + 1) + out_min;
-	}
 }
 #endif
-Model::Model() : modelListener(0), ADC_VAL(50)
+Model::Model() : modelListener(0), temperature(0), humidity(0)
 {
 
 }
@@ -29,6 +24,7 @@ void Model::tick()
 
 //	ADC_VAL = map(0, 0, 65535, 0, 100);
 
-	modelListener->setADC(applicationContext.temperature);
+	modelListener->setHumidity(applicationContext.humidity);
+	modelListener->setTemperature(applicationContext.temperature);
 	#endif
 }

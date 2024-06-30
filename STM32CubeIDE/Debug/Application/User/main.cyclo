@@ -1,8 +1,8 @@
-C:/Users/Martin/Desktop/TouchGFXBasics_1/Core/Src/main.c:689:6:StartDefaultTask	1
-C:/Users/Martin/Desktop/TouchGFXBasics_1/Core/Src/main.c:735:6:consumerTask_handler	1
-C:/Users/Martin/Desktop/TouchGFXBasics_1/Core/Src/main.c:707:6:dht11Task_handler	8
-C:/Users/Martin/Desktop/TouchGFXBasics_1/Core/Src/dht11.c:29:21:read_DHT11	7
-C:/Users/Martin/Desktop/TouchGFXBasics_1/Core/Src/main.c:258:6:SystemClock_Config	2
-C:/Users/Martin/Desktop/TouchGFXBasics_1/Core/Src/main.c:143:5:main	5
-C:/Users/Martin/Desktop/TouchGFXBasics_1/Core/Src/main.c:841:6:HAL_TIM_PeriodElapsedCallback	2
-C:/Users/Martin/Desktop/TouchGFXBasics_1/Core/Src/main.c:858:6:Error_Handler	1
+C:/Users/Martin/Desktop/TouchGFXBasics_1/Core/Src/main.c:687:6:StartDefaultTask	1
+C:/Users/Martin/Desktop/TouchGFXBasics_1/Core/Src/main.c:705:6:dht11Task_handler	1
+C:/Users/Martin/Desktop/TouchGFXBasics_1/Core/Src/main.c:731:6:consumerTask_handler	3
+C:/Users/Martin/Desktop/TouchGFXBasics_1/Core/Src/dht11_simulated.c:13:21:read_DHT11	1
+C:/Users/Martin/Desktop/TouchGFXBasics_1/Core/Src/main.c:260:6:SystemClock_Config	2
+C:/Users/Martin/Desktop/TouchGFXBasics_1/Core/Src/main.c:145:5:main	5
+C:/Users/Martin/Desktop/TouchGFXBasics_1/Core/Src/main.c:838:6:HAL_TIM_PeriodElapsedCallback	2
+C:/Users/Martin/Desktop/TouchGFXBasics_1/Core/Src/main.c:855:6:Error_Handler	1

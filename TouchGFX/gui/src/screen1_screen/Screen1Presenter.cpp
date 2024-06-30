@@ -17,7 +17,9 @@ void Screen1Presenter::deactivate()
 
 }
 
-void Screen1Presenter::setADC (int value)
-{
-	view.setADC(value);
+void Screen1Presenter::setTemperature(int value) {
+	view.setTemperature(value);
+}
+void Screen1Presenter::setHumidity(int value) {
+	view.setHumidity(value);
 }

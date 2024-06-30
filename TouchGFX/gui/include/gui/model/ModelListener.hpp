@@ -14,7 +14,8 @@ public:
     {
         model = m;
     }
-    virtual void setADC(int value) {};
+    virtual void setTemperature(int temperature) {};
+    virtual void setHumidity(int humidity) {};
 protected:
     Model* model;
 };
