@@ -17,8 +17,8 @@ Screen2ViewBase::Screen2ViewBase() :
     add(__background);
 
     animatedImage1.setXY(0, -5);
-    animatedImage1.setBitmaps(BITMAP_GIPHY_1_ID, BITMAP_GIPHY_21_ID);
-    animatedImage1.setUpdateTicksInterval(36);
+    animatedImage1.setBitmaps(BITMAP_GIPHY_1_ID, BITMAP_GIPHY_5_ID);
+    animatedImage1.setUpdateTicksInterval(6);
     animatedImage1.startAnimation(false, true, true);
     add(animatedImage1);
 

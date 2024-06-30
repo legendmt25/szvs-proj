@@ -11,8 +11,8 @@
             "Width": 500,
             "Height": 276,
             "FileNameFirst": "giphy-1.png",
-            "FileNameLast": "giphy-21.png",
-            "UpdateTicksInterval": 300,
+            "FileNameLast": "giphy-5.png",
+            "UpdateTicksInterval": 100,
             "StartOnLoad": true,
             "LoopEnabled": true
           },
@@ -114,8 +114,8 @@
             "Width": 500,
             "Height": 276,
             "FileNameFirst": "giphy-1.png",
-            "FileNameLast": "giphy-21.png",
-            "UpdateTicksInterval": 600,
+            "FileNameLast": "giphy-5.png",
+            "UpdateTicksInterval": 100,
             "StartOnLoad": true,
             "LoopEnabled": true
           },

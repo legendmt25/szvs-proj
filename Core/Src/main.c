@@ -106,11 +106,14 @@ osMessageQueueId_t controlQueueHandle;
 const osMessageQueueAttr_t controlQueue_attributes = {
   .name = "controlQueue"
 };
+/* Definitions for temperatureHourlyRead */
+osTimerId_t temperatureHourlyReadHandle;
+const osTimerAttr_t temperatureHourlyRead_attributes = {
+  .name = "temperatureHourlyRead"
+};
 /* USER CODE BEGIN PV */
 ApplicationContext_TypeDef applicationContext;
 /* USER CODE END PV */
-
-
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
@@ -128,6 +131,7 @@ extern void TouchGFX_Task(void *argument);
 extern void videoTaskFunc(void *argument);
 void dht11Task_handler(void *argument);
 void consumerTask_handler(void *argument);
+void temperatureHourlyReadCb(void *argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -164,6 +168,12 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
+  for(int i = 0; i < 10; i++) {
+	  applicationContext.temperatureData[i] = -100;
+  }
+  applicationContext.minTemperature = 100;
+  applicationContext.maxTemperature = -100;
+  applicationContext.temperature = 0;
 
   /* USER CODE END Init */
 
@@ -202,8 +212,13 @@ int main(void)
   /* add semaphores, ... */
   /* USER CODE END RTOS_SEMAPHORES */
 
+  /* Create the timer(s) */
+  /* creation of temperatureHourlyRead */
+  temperatureHourlyReadHandle = osTimerNew(temperatureHourlyReadCb, osTimerPeriodic, NULL, &temperatureHourlyRead_attributes);
+
   /* USER CODE BEGIN RTOS_TIMERS */
   /* start timers, add new ones, ... */
+  osStatus_t temperatureHourlyReadStartStatus = osTimerStart(temperatureHourlyReadHandle, 5000);
   /* USER CODE END RTOS_TIMERS */
 
   /* Create the queue(s) */
@@ -746,6 +761,14 @@ void consumerTask_handler(void *argument)
     if(!strcmp(control.type, "DHT11")) {
       DHT11_HandleTypeDef* dht11 = (DHT11_HandleTypeDef*) control.obj;
 
+      if(applicationContext.maxTemperature < dht11->temperature) {
+    	applicationContext.maxTemperature = dht11->temperature;
+      }
+
+      if(applicationContext.minTemperature > dht11->temperature) {
+      	applicationContext.minTemperature = dht11->temperature;
+	  }
+
       applicationContext.temperature = dht11->temperature;
       applicationContext.humidity = dht11->humidity;
     }
@@ -753,6 +776,32 @@ void consumerTask_handler(void *argument)
     osDelay(1);
   }
   /* USER CODE END consumerTask_handler */
+}
+
+/* temperatureHourlyReadCb function */
+void temperatureHourlyReadCb(void *argument)
+{
+  /* USER CODE BEGIN temperatureHourlyReadCb */
+	int i = 0;
+	int size = 10;
+
+	for(i = 0; i < size; ++i) {
+		if(applicationContext.temperatureData[i] == -1) {
+			break;
+		}
+	}
+
+	if(i < size - 1) {
+		applicationContext.temperatureData[i] = applicationContext.temperature;
+	} else {
+		for(i = 0; i < size - 1; ++i) {
+			applicationContext.temperatureData[i] = applicationContext.temperatureData[i + 1];
+		}
+
+		applicationContext.temperatureData[size - 1] = applicationContext.temperature;
+	}
+
+  /* USER CODE END temperatureHourlyReadCb */
 }
 
 /* MPU Configuration */

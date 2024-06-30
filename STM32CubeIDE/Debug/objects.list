@@ -61,8 +61,6 @@
 "./Application/User/generated/image_giphy-7.o"
 "./Application/User/generated/image_giphy-8.o"
 "./Application/User/generated/image_giphy-9.o"
-"./Application/User/generated/image_icon_theme_images_navigation_arrow_back_ios_30_23_FFFFFF.svg.o"
-"./Application/User/generated/image_icon_theme_images_navigation_arrow_forward_ios_30_23_FFFFFF.svg.o"
 "./Application/User/generated/image_partly_cloudy.o"
 "./Application/User/gui/FrontendApplication.o"
 "./Application/User/gui/Model.o"

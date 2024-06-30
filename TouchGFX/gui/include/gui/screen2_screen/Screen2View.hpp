@@ -11,10 +11,10 @@ public:
     virtual ~Screen2View() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
-    virtual void setCurrentTemperature(int value);
+    virtual void setTemperature(int value);
     virtual void setMaxTemperature(int value);
     virtual void setMinTemperature(int value);
-    virtual void updateGraph();
+    virtual void setTemperatureGraphData(int* data);
 protected:
 };
 

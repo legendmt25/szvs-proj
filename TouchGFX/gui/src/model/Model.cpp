@@ -9,7 +9,8 @@ extern "C"
 	extern ApplicationContext_TypeDef applicationContext;
 }
 #endif
-Model::Model() : modelListener(0), temperature(0), humidity(0)
+Model::Model() : modelListener(0),
+		temperature(0), maxTemperature(0), minTemperature(0), temperatureGraphData(NULL), humidity(0)
 {
 
 }
@@ -25,6 +26,12 @@ void Model::tick()
 //	ADC_VAL = map(0, 0, 65535, 0, 100);
 
 	modelListener->setHumidity(applicationContext.humidity);
+
 	modelListener->setTemperature(applicationContext.temperature);
+	modelListener->setMaxTemperature(applicationContext.maxTemperature);
+	modelListener->setMinTemperature(applicationContext.minTemperature);
+
+	modelListener->setTemperatureGraphData((int*) &applicationContext.temperatureData);
+
 	#endif
 }

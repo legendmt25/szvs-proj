@@ -16,3 +16,20 @@ void Screen2Presenter::deactivate()
 {
 
 }
+
+void Screen2Presenter::setTemperature(int value) {
+	view.setTemperature(value);
+};
+
+void Screen2Presenter::setMaxTemperature(int value) {
+	view.setMaxTemperature(value);
+};
+
+void Screen2Presenter::setMinTemperature(int value) {
+	view.setMinTemperature(value);
+};
+
+void Screen2Presenter::setTemperatureGraphData(int* data) {
+	view.setTemperatureGraphData(data);
+};
+

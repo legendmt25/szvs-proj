@@ -17,7 +17,10 @@ public:
 protected:
     ModelListener* modelListener;
     int temperature;
+    int maxTemperature;
+    int minTemperature;
     int humidity;
+    int* temperatureGraphData;
 };
 
 #endif // MODEL_HPP

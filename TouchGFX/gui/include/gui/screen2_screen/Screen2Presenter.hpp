@@ -26,6 +26,10 @@ public:
     virtual void deactivate();
 
     virtual ~Screen2Presenter() {};
+    virtual void setTemperature(int value);
+	virtual void setMaxTemperature(int value);
+	virtual void setMinTemperature(int value);
+	virtual void setTemperatureGraphData(int* data);
 
 private:
     Screen2Presenter();

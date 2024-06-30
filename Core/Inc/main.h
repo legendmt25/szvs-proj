@@ -38,9 +38,12 @@ extern "C" {
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
 typedef struct {
+	int16_t maxTemperature;
+	int16_t minTemperature;
 	uint8_t temperature;
 	uint8_t humidity;
 	uint8_t error;
+	int16_t temperatureData[10];
 } ApplicationContext_TypeDef;
 
 /* USER CODE END ET */
