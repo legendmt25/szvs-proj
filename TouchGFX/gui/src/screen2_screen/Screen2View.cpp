@@ -31,8 +31,8 @@ void Screen2View::setMinTemperature(int value) {
 };
 
 void Screen2View::setTemperatureGraphData(short int* data) {
-	temperatureGraph.addDataPoint(data[9]);
-//	for(int i = 0; i < 10; ++i) {
-//	  temperatureGraph.addDataPoint(data[i]);
-//	}
+	temperatureGraph.clear();
+	for(int i = 0; i < 10; ++i) {
+	  temperatureGraph.addDataPoint(data[i]);
+	}
 };
