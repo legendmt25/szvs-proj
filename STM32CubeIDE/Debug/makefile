@@ -99,8 +99,8 @@ all: main-build
 main-build: STM32H750B-DK.elf secondary-outputs
 
 # Tool invocations
-STM32H750B-DK.elf STM32H750B-DK.map: $(OBJS) $(USER_OBJS) C:\Users\Martin\Desktop\TouchGFXBasics_1\STM32CubeIDE\STM32H750XBHX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "STM32H750B-DK.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"C:\Users\Martin\Desktop\TouchGFXBasics_1\STM32CubeIDE\STM32H750XBHX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32H750B-DK.map" -Wl,--gc-sections -static -LC:/Users/Martin/Desktop/TouchGFXBasics_1/Middlewares/ST/touchgfx/lib/core/cortex_m7/gcc --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+STM32H750B-DK.elf STM32H750B-DK.map: $(OBJS) $(USER_OBJS) C:\Users\Martin\Desktop\szvs-proj\STM32CubeIDE\STM32H750XBHX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "STM32H750B-DK.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"C:\Users\Martin\Desktop\szvs-proj\STM32CubeIDE\STM32H750XBHX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32H750B-DK.map" -Wl,--gc-sections -static -LC:/Users/Martin/Desktop/TouchGFXBasics_1/Middlewares/ST/touchgfx/lib/core/cortex_m7/gcc --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

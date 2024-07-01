@@ -27,9 +27,14 @@
 /* USER CODE BEGIN Includes */
 #include "stm32h750b_discovery_qspi.h"
 #include "stm32h750b_discovery_sdram.h"
-#include "dht11.h"
-#include "dht11.c"
 #include "string.h"
+#include "dht11.h"
+
+#if USE_SIMULATED
+#include "dht11_simulated.c"
+#else
+#include "dht11.c"
+#endif
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
