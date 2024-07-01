@@ -258,7 +258,7 @@
       }
     ],
     "CustomContainerDefinitions": [],
-    "Name": "Adc",
+    "Name": "SZVSProject",
     "Resolution": {
       "Width": 480,
       "Height": 272

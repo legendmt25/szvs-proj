@@ -273,7 +273,6 @@
                   <listOptionValue builtIn="false" value=":libtouchgfx-float-abi-hard.a"/>
                 </option>
                 <option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.linker.option.directories.9178044365" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.linker.option.directories" valueType="libPaths">
-                  <listOptionValue builtIn="false" value="E:/Projeler/TouchGFX/Adc/Middlewares/ST/touchgfx/lib/core/cortex_m7/gcc"/>
                   <listOptionValue builtIn="false" value="C:/Users/Martin/Desktop/TouchGFXBasics_1/Middlewares/ST/touchgfx/lib/core/cortex_m7/gcc"/>
                 </option>
                 <inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.linker.input.1054819001" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.linker.input">
