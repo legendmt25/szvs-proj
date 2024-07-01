@@ -140,11 +140,11 @@ void Application_Context_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 void Application_Context_Init(void) {
-  for(int i = 0; i < 10; i++) {
-	applicationContext.temperatureData[i] = -100;
+  for(int i = 0; i < TEMPERATURE_DATA_SIZE; i++) {
+	applicationContext.temperatureData[i] = MIN_ALLOWED_TEMPERATURE;
   }
-  applicationContext.minTemperature = 100;
-  applicationContext.maxTemperature = -100;
+  applicationContext.minTemperature = MAX_ALLOWED_TEMPERATURE;
+  applicationContext.maxTemperature = MIN_ALLOWED_TEMPERATURE;
   applicationContext.temperature = 0;
 }
 /* USER CODE END 0 */
@@ -784,10 +784,10 @@ void temperatureHourlyReadCb(void *argument)
 {
   /* USER CODE BEGIN temperatureHourlyReadCb */
 	int i = 0;
-	int size = 10;
+	int size = TEMPERATURE_DATA_SIZE;
 
 	for(i = 0; i < size; ++i) {
-		if(applicationContext.temperatureData[i] == -100) {
+		if(applicationContext.temperatureData[i] == MIN_ALLOWED_TEMPERATURE) {
 			break;
 		}
 	}

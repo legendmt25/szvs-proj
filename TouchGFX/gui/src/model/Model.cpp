@@ -28,7 +28,7 @@ void Model::tick()
 	modelListener->setMaxTemperature(applicationContext.maxTemperature);
 	modelListener->setMinTemperature(applicationContext.minTemperature);
 
-	modelListener->setTemperatureGraphData(&applicationContext.temperatureData[0]);
+	modelListener->setTemperatureGraphData(&applicationContext.temperatureData[0], applicationContext.minTemperature, applicationContext.maxTemperature);
 
 	#endif
 }

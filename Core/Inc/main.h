@@ -37,13 +37,17 @@ extern "C" {
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
+#define TEMPERATURE_DATA_SIZE 24
+#define MIN_ALLOWED_TEMPERATURE -100
+#define MAX_ALLOWED_TEMPERATURE 100
+
 typedef struct {
 	int16_t maxTemperature;
 	int16_t minTemperature;
 	uint8_t temperature;
 	uint8_t humidity;
 	uint8_t error;
-	int16_t temperatureData[10];
+	int16_t temperatureData[TEMPERATURE_DATA_SIZE];
 } ApplicationContext_TypeDef;
 
 /* USER CODE END ET */

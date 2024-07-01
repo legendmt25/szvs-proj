@@ -16,19 +16,19 @@
         <Translation Language="GB">000</Translation>
       </Text>
       <Text Id="__SingleUse_JNB3" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">Min: &lt;value&gt; °C</Translation>
+        <Translation Language="GB">Lowest: &lt;value&gt; °C</Translation>
       </Text>
       <Text Id="__SingleUse_HQVR" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">000</Translation>
       </Text>
       <Text Id="__SingleUse_XZKY" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">Max: &lt;value&gt; °C</Translation>
+        <Translation Language="GB">Highest: &lt;value&gt; °C</Translation>
       </Text>
       <Text Id="__SingleUse_DG5G" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">000</Translation>
       </Text>
       <Text Id="__SingleUse_DSQV" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">Current: &lt;value&gt; °C</Translation>
+        <Translation Language="GB">&lt;value&gt; °C</Translation>
       </Text>
       <Text Id="__SingleUse_YZZO" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">000</Translation>

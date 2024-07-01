@@ -14,7 +14,7 @@ public:
     virtual void setTemperature(int value);
     virtual void setMaxTemperature(int value);
     virtual void setMinTemperature(int value);
-    virtual void setTemperatureGraphData(short int* data);
+    virtual void setTemperatureGraphData(short int* data, int minYRange, int maxYRange);
 protected:
 };
 

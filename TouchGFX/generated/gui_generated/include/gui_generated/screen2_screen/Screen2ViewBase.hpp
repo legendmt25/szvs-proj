@@ -35,7 +35,7 @@ protected:
     touchgfx::TextAreaWithOneWildcard minTemperatureTextArea;
     touchgfx::TextAreaWithOneWildcard temperatureTextArea;
     touchgfx::TextAreaWithOneWildcard maxTemperatureTextArea;
-    touchgfx::GraphWrapAndOverwrite<10> temperatureGraph;
+    touchgfx::GraphWrapAndOverwrite<24> temperatureGraph;
     touchgfx::GraphElementLine temperatureGraphLine1;
     touchgfx::PainterRGB565 temperatureGraphLine1Painter;
     touchgfx::TextButtonStyle< touchgfx::ClickButtonTrigger >  backButton;

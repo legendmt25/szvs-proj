@@ -6,6 +6,6 @@
 
 static unsigned short SIM_WIDTH = 480;
 static unsigned short SIM_HEIGHT = 272;
-#define SIM_TITLE "Adc"
+#define SIM_TITLE "SZVSProject"
 
 #endif // SIMCONSTANTS_HPP

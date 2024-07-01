@@ -16,13 +16,13 @@ Screen2ViewBase::Screen2ViewBase() :
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     add(__background);
 
-    animatedImage1.setXY(0, -5);
-    animatedImage1.setBitmaps(BITMAP_GIPHY_1_ID, BITMAP_GIPHY_5_ID);
+    animatedImage1.setXY(-88, -74);
+    animatedImage1.setBitmaps(BITMAP_FRAME_00_DELAY_0_05S_ID, BITMAP_FRAME_07_DELAY_0_05S_ID);
     animatedImage1.setUpdateTicksInterval(6);
     animatedImage1.startAnimation(false, true, true);
     add(animatedImage1);
 
-    minTemperatureTextArea.setXY(16, 143);
+    minTemperatureTextArea.setXY(16, 128);
     minTemperatureTextArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     minTemperatureTextArea.setLinespacing(0);
     Unicode::snprintf(minTemperatureTextAreaBuffer, MINTEMPERATURETEXTAREA_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_4SII).getText());
@@ -31,7 +31,7 @@ Screen2ViewBase::Screen2ViewBase() :
     minTemperatureTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_JNB3));
     add(minTemperatureTextArea);
 
-    temperatureTextArea.setXY(16, 76);
+    temperatureTextArea.setXY(16, 61);
     temperatureTextArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     temperatureTextArea.setLinespacing(0);
     Unicode::snprintf(temperatureTextAreaBuffer, TEMPERATURETEXTAREA_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_DG5G).getText());
@@ -40,7 +40,7 @@ Screen2ViewBase::Screen2ViewBase() :
     temperatureTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_DSQV));
     add(temperatureTextArea);
 
-    maxTemperatureTextArea.setXY(16, 108);
+    maxTemperatureTextArea.setXY(16, 93);
     maxTemperatureTextArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     maxTemperatureTextArea.setLinespacing(0);
     Unicode::snprintf(maxTemperatureTextAreaBuffer, MAXTEMPERATURETEXTAREA_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_HQVR).getText());
@@ -49,27 +49,41 @@ Screen2ViewBase::Screen2ViewBase() :
     maxTemperatureTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_XZKY));
     add(maxTemperatureTextArea);
 
-    temperatureGraph.setPosition(16, 195, 455, 63);
+    temperatureGraph.setPosition(16, 161, 455, 97);
     temperatureGraph.setScale(1);
     temperatureGraph.setGraphAreaMargin(0, 0, 0, 0);
     temperatureGraph.setGraphAreaPadding(0, 0, 0, 0);
-    temperatureGraph.setGraphRangeY(-40, 40);
-    temperatureGraphLine1Painter.setColor(touchgfx::Color::getColorFromRGB(20, 151, 197));
+    temperatureGraph.setGraphRangeY(10, 36);
+    temperatureGraphLine1Painter.setColor(touchgfx::Color::getColorFromRGB(229, 250, 0));
     temperatureGraphLine1.setPainter(temperatureGraphLine1Painter);
-    temperatureGraphLine1.setLineWidth(2);
+    temperatureGraphLine1.setLineWidth(5);
     temperatureGraph.addGraphElement(temperatureGraphLine1);
 
 
-    temperatureGraph.addDataPoint(16.09687f);
-    temperatureGraph.addDataPoint(-36.17379f);
-    temperatureGraph.addDataPoint(-8.68409f);
-    temperatureGraph.addDataPoint(21.25004f);
-    temperatureGraph.addDataPoint(1.1252f);
-    temperatureGraph.addDataPoint(5.71044f);
-    temperatureGraph.addDataPoint(-0.17871f);
-    temperatureGraph.addDataPoint(-30.22536f);
-    temperatureGraph.addDataPoint(5.64353f);
-    temperatureGraph.addDataPoint(39.02043f);
+    temperatureGraph.addDataPoint(24.27752f);
+    temperatureGraph.addDataPoint(33.21108f);
+    temperatureGraph.addDataPoint(23.45068f);
+    temperatureGraph.addDataPoint(27.28866f);
+    temperatureGraph.addDataPoint(26.69411f);
+    temperatureGraph.addDataPoint(11.37714f);
+    temperatureGraph.addDataPoint(17.36356f);
+    temperatureGraph.addDataPoint(25.91969f);
+    temperatureGraph.addDataPoint(19.97609f);
+    temperatureGraph.addDataPoint(29.48173f);
+    temperatureGraph.addDataPoint(34.11833f);
+    temperatureGraph.addDataPoint(18.61283f);
+    temperatureGraph.addDataPoint(19.21458f);
+    temperatureGraph.addDataPoint(22.17554f);
+    temperatureGraph.addDataPoint(12.56236f);
+    temperatureGraph.addDataPoint(22.77082f);
+    temperatureGraph.addDataPoint(33.51012f);
+    temperatureGraph.addDataPoint(24.00693f);
+    temperatureGraph.addDataPoint(26.56313f);
+    temperatureGraph.addDataPoint(27.66674f);
+    temperatureGraph.addDataPoint(12.12877f);
+    temperatureGraph.addDataPoint(16.15444f);
+    temperatureGraph.addDataPoint(26.04724f);
+    temperatureGraph.addDataPoint(20.14697f);
     add(temperatureGraph);
 
     backButton.setText(TypedText(T___SINGLEUSE_YOM4));

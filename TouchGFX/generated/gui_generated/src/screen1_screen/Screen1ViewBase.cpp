@@ -13,13 +13,13 @@ Screen1ViewBase::Screen1ViewBase() :
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     add(__background);
 
-    animatedImage1.setXY(0, -4);
-    animatedImage1.setBitmaps(BITMAP_GIPHY_1_ID, BITMAP_GIPHY_5_ID);
+    animatedImage1.setXY(-88, -74);
+    animatedImage1.setBitmaps(BITMAP_FRAME_00_DELAY_0_05S_ID, BITMAP_FRAME_07_DELAY_0_05S_ID);
     animatedImage1.setUpdateTicksInterval(6);
     animatedImage1.startAnimation(false, true, true);
     add(animatedImage1);
 
-    humidityTextArea.setXY(20, 51);
+    humidityTextArea.setXY(20, 48);
     humidityTextArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     humidityTextArea.setLinespacing(0);
     Unicode::snprintf(humidityTextAreaBuffer, HUMIDITYTEXTAREA_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_YZZO).getText());
@@ -28,7 +28,7 @@ Screen1ViewBase::Screen1ViewBase() :
     humidityTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_Y9RM));
     add(humidityTextArea);
 
-    temperatureTextArea.setXY(20, 16);
+    temperatureTextArea.setXY(20, 15);
     temperatureTextArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     temperatureTextArea.setLinespacing(0);
     Unicode::snprintf(temperatureTextAreaBuffer, TEMPERATURETEXTAREA_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_1MEA).getText());

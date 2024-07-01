@@ -6,28 +6,14 @@
 #include <touchgfx/hal/Types.hpp>
 #include <touchgfx/Bitmap.hpp>
 
-const uint16_t BITMAP_GIPHY_1_ID = 0;
-const uint16_t BITMAP_GIPHY_10_ID = 1;
-const uint16_t BITMAP_GIPHY_11_ID = 2;
-const uint16_t BITMAP_GIPHY_12_ID = 3;
-const uint16_t BITMAP_GIPHY_13_ID = 4;
-const uint16_t BITMAP_GIPHY_14_ID = 5;
-const uint16_t BITMAP_GIPHY_15_ID = 6;
-const uint16_t BITMAP_GIPHY_16_ID = 7;
-const uint16_t BITMAP_GIPHY_17_ID = 8;
-const uint16_t BITMAP_GIPHY_18_ID = 9;
-const uint16_t BITMAP_GIPHY_19_ID = 10;
-const uint16_t BITMAP_GIPHY_2_ID = 11;
-const uint16_t BITMAP_GIPHY_20_ID = 12;
-const uint16_t BITMAP_GIPHY_21_ID = 13;
-const uint16_t BITMAP_GIPHY_3_ID = 14;
-const uint16_t BITMAP_GIPHY_4_ID = 15;
-const uint16_t BITMAP_GIPHY_5_ID = 16;
-const uint16_t BITMAP_GIPHY_6_ID = 17;
-const uint16_t BITMAP_GIPHY_7_ID = 18;
-const uint16_t BITMAP_GIPHY_8_ID = 19;
-const uint16_t BITMAP_GIPHY_9_ID = 20;
-const uint16_t BITMAP_PARTLY_CLOUDY_ID = 21;
+const uint16_t BITMAP_FRAME_00_DELAY_0_05S_ID = 0;
+const uint16_t BITMAP_FRAME_01_DELAY_0_05S_ID = 1;
+const uint16_t BITMAP_FRAME_02_DELAY_0_05S_ID = 2;
+const uint16_t BITMAP_FRAME_03_DELAY_0_05S_ID = 3;
+const uint16_t BITMAP_FRAME_04_DELAY_0_05S_ID = 4;
+const uint16_t BITMAP_FRAME_05_DELAY_0_05S_ID = 5;
+const uint16_t BITMAP_FRAME_06_DELAY_0_05S_ID = 6;
+const uint16_t BITMAP_FRAME_07_DELAY_0_05S_ID = 7;
 
 namespace BitmapDatabase
 {

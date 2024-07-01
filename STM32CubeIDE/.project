@@ -720,114 +720,44 @@
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/SVGDatabase.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/generated/image_giphy-1.cpp</name>
+			<name>Application/User/generated/image_frame_00_delay-0.05s.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_giphy-1.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_frame_00_delay-0.05s.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/generated/image_giphy-10.cpp</name>
+			<name>Application/User/generated/image_frame_01_delay-0.05s.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_giphy-10.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_frame_01_delay-0.05s.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/generated/image_giphy-11.cpp</name>
+			<name>Application/User/generated/image_frame_02_delay-0.05s.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_giphy-11.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_frame_02_delay-0.05s.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/generated/image_giphy-12.cpp</name>
+			<name>Application/User/generated/image_frame_03_delay-0.05s.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_giphy-12.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_frame_03_delay-0.05s.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/generated/image_giphy-13.cpp</name>
+			<name>Application/User/generated/image_frame_04_delay-0.05s.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_giphy-13.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_frame_04_delay-0.05s.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/generated/image_giphy-14.cpp</name>
+			<name>Application/User/generated/image_frame_05_delay-0.05s.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_giphy-14.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_frame_05_delay-0.05s.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/generated/image_giphy-15.cpp</name>
+			<name>Application/User/generated/image_frame_06_delay-0.05s.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_giphy-15.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_frame_06_delay-0.05s.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/generated/image_giphy-16.cpp</name>
+			<name>Application/User/generated/image_frame_07_delay-0.05s.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_giphy-16.cpp</locationURI>
-		</link>
-		<link>
-			<name>Application/User/generated/image_giphy-17.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_giphy-17.cpp</locationURI>
-		</link>
-		<link>
-			<name>Application/User/generated/image_giphy-18.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_giphy-18.cpp</locationURI>
-		</link>
-		<link>
-			<name>Application/User/generated/image_giphy-19.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_giphy-19.cpp</locationURI>
-		</link>
-		<link>
-			<name>Application/User/generated/image_giphy-2.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_giphy-2.cpp</locationURI>
-		</link>
-		<link>
-			<name>Application/User/generated/image_giphy-20.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_giphy-20.cpp</locationURI>
-		</link>
-		<link>
-			<name>Application/User/generated/image_giphy-21.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_giphy-21.cpp</locationURI>
-		</link>
-		<link>
-			<name>Application/User/generated/image_giphy-3.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_giphy-3.cpp</locationURI>
-		</link>
-		<link>
-			<name>Application/User/generated/image_giphy-4.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_giphy-4.cpp</locationURI>
-		</link>
-		<link>
-			<name>Application/User/generated/image_giphy-5.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_giphy-5.cpp</locationURI>
-		</link>
-		<link>
-			<name>Application/User/generated/image_giphy-6.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_giphy-6.cpp</locationURI>
-		</link>
-		<link>
-			<name>Application/User/generated/image_giphy-7.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_giphy-7.cpp</locationURI>
-		</link>
-		<link>
-			<name>Application/User/generated/image_giphy-8.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_giphy-8.cpp</locationURI>
-		</link>
-		<link>
-			<name>Application/User/generated/image_giphy-9.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_giphy-9.cpp</locationURI>
-		</link>
-		<link>
-			<name>Application/User/generated/image_partly_cloudy.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_partly_cloudy.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_frame_07_delay-0.05s.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/LanguageGb.cpp</name>
