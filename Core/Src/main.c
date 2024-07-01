@@ -28,7 +28,7 @@
 #include "stm32h750b_discovery_qspi.h"
 #include "stm32h750b_discovery_sdram.h"
 #include "dht11.h"
-#include "dht11_simulated.c"
+#include "dht11.c"
 #include "string.h"
 /* USER CODE END Includes */
 
@@ -219,7 +219,7 @@ int main(void)
 
   /* USER CODE BEGIN RTOS_TIMERS */
   /* start timers, add new ones, ... */
-  osStatus_t temperatureHourlyReadStartStatus = osTimerStart(temperatureHourlyReadHandle, 5000);
+  osStatus_t temperatureHourlyReadStartStatus = osTimerStart(temperatureHourlyReadHandle, TEMPERATURE_READ_TIMER_MS);
   /* USER CODE END RTOS_TIMERS */
 
   /* Create the queue(s) */

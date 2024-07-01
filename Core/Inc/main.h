@@ -37,6 +37,7 @@ extern "C" {
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
+#define TEMPERATURE_READ_TIMER_MS 3600000
 #define TEMPERATURE_DATA_SIZE 24
 #define MIN_ALLOWED_TEMPERATURE -100
 #define MAX_ALLOWED_TEMPERATURE 100
