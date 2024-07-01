@@ -20,7 +20,7 @@ protected:
     int maxTemperature;
     int minTemperature;
     int humidity;
-    int* temperatureGraphData;
+    short int* temperatureGraphData;
 };
 
 #endif // MODEL_HPP

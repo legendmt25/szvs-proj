@@ -134,12 +134,19 @@ void consumerTask_handler(void *argument);
 void temperatureHourlyReadCb(void *argument);
 
 /* USER CODE BEGIN PFP */
-
+void Application_Context_Init(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+void Application_Context_Init(void) {
+  for(int i = 0; i < 10; i++) {
+	applicationContext.temperatureData[i] = -100;
+  }
+  applicationContext.minTemperature = 100;
+  applicationContext.maxTemperature = -100;
+  applicationContext.temperature = 0;
+}
 /* USER CODE END 0 */
 
 /**
@@ -168,13 +175,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-  for(int i = 0; i < 10; i++) {
-	  applicationContext.temperatureData[i] = -100;
-  }
-  applicationContext.minTemperature = 100;
-  applicationContext.maxTemperature = -100;
-  applicationContext.temperature = 0;
-
+  Application_Context_Init();
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -786,7 +787,7 @@ void temperatureHourlyReadCb(void *argument)
 	int size = 10;
 
 	for(i = 0; i < size; ++i) {
-		if(applicationContext.temperatureData[i] == -1) {
+		if(applicationContext.temperatureData[i] == -100) {
 			break;
 		}
 	}
@@ -794,6 +795,7 @@ void temperatureHourlyReadCb(void *argument)
 	if(i < size - 1) {
 		applicationContext.temperatureData[i] = applicationContext.temperature;
 	} else {
+		// Shift array by one and add the newest value in front
 		for(i = 0; i < size - 1; ++i) {
 			applicationContext.temperatureData[i] = applicationContext.temperatureData[i + 1];
 		}

@@ -18,7 +18,7 @@ public:
     virtual void setHumidity(int humidity) {};
     virtual void setMaxTemperature(int temperature) {};
     virtual void setMinTemperature(int temperature) {};
-    virtual void setTemperatureGraphData(int* points) {};
+    virtual void setTemperatureGraphData(short int* data) {};
 protected:
     Model* model;
 };

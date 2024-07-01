@@ -53,23 +53,23 @@ Screen2ViewBase::Screen2ViewBase() :
     temperatureGraph.setScale(1);
     temperatureGraph.setGraphAreaMargin(0, 0, 0, 0);
     temperatureGraph.setGraphAreaPadding(0, 0, 0, 0);
-    temperatureGraph.setGraphRangeY(0, 10);
+    temperatureGraph.setGraphRangeY(-100, 100);
     temperatureGraphLine1Painter.setColor(touchgfx::Color::getColorFromRGB(20, 151, 197));
     temperatureGraphLine1.setPainter(temperatureGraphLine1Painter);
     temperatureGraphLine1.setLineWidth(2);
     temperatureGraph.addGraphElement(temperatureGraphLine1);
 
 
-    temperatureGraph.addDataPoint(7.01211f);
-    temperatureGraph.addDataPoint(0.47828f);
-    temperatureGraph.addDataPoint(3.91449f);
-    temperatureGraph.addDataPoint(7.65625f);
-    temperatureGraph.addDataPoint(5.14065f);
-    temperatureGraph.addDataPoint(5.71381f);
-    temperatureGraph.addDataPoint(4.97766f);
-    temperatureGraph.addDataPoint(1.22183f);
-    temperatureGraph.addDataPoint(5.70544f);
-    temperatureGraph.addDataPoint(9.87755f);
+    temperatureGraph.addDataPoint(40.24216f);
+    temperatureGraph.addDataPoint(-90.43447f);
+    temperatureGraph.addDataPoint(-21.71023f);
+    temperatureGraph.addDataPoint(53.12509f);
+    temperatureGraph.addDataPoint(2.813f);
+    temperatureGraph.addDataPoint(14.27611f);
+    temperatureGraph.addDataPoint(-0.44677f);
+    temperatureGraph.addDataPoint(-75.56339f);
+    temperatureGraph.addDataPoint(14.10883f);
+    temperatureGraph.addDataPoint(97.55108f);
     add(temperatureGraph);
 
     backButton.setText(TypedText(T___SINGLEUSE_YOM4));

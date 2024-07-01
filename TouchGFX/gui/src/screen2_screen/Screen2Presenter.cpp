@@ -29,7 +29,7 @@ void Screen2Presenter::setMinTemperature(int value) {
 	view.setMinTemperature(value);
 };
 
-void Screen2Presenter::setTemperatureGraphData(int* data) {
+void Screen2Presenter::setTemperatureGraphData(short int* data) {
 	view.setTemperatureGraphData(data);
 };
 
